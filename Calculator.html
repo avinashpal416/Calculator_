@@ -5,42 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="Calculator.css"/>
-    <script src="script.js"></script>
 </head>
 <body>
- 
+    <script>
+        let input = '';
+        let result = 0;
 
-   <div class="calculator">
-    <div class="screen"><h5>0.0</h5></div>
-    <div class="button-container">
-    <button class="keys">C</button>
-    <button class="keys">CE</button>
-    <button class="keys">%</button>
-    <button class="keys">X</button>
-    <button class="keys">X</button>
-    <button class="keys">X</button>
-    <button class="keys">X</button>
-    <button class="keys">/</button>
-    <button class="keys">7</button>
-    <button class="keys">8</button>
-    <button class="keys">9</button>
-    <button class="keys">*</button>
-    <button class="keys">4</button>
-    <button class="keys">5</button>
-    <button class="keys">6</button>
-    <button class="keys">-</button>
-    <button class="keys">1</button>
-    <button class="keys">2</button>
-    <button class="keys">3</button>
-    <button class="keys">+</button>
-    <button class="keys">+/-</button>
-    <button class="keys">0</button>
-    <button class="keys">.</button>
-    <button class="keys">=</button>
-    
-    
-</div>
-   </div>
-    
+        const calculation = (value) => {
+            if(value === '=') {
+                try {
+                    result = eval(input);
+                    document.querySelector('.screen').value = result;
+                    input = '';
+                } catch {
+                    document.querySelector('.screen').value = 'Error';
+                    input = '';
+                }
+            } else if(value === 'C') {
+                input = '';
+                document.querySelector('.screen').value = input;
+            } else {
+                input += value;
+                document.querySelector('.screen').value = input;
+            }
+        }
+    </script>
+
+    <div class="calculator">
+        <input class="screen" placeholder="0.00"></input>
+        <div class="button-container">
+            <button onclick="calculation('C')" class="keys">C</button>
+            <button onclick="calculation('/')" class="keys">/</button>
+            <button onclick="calculation('*')" class="keys">*</button>
+            <button onclick="calculation('-')" class="keys">-</button>
+            <button onclick="calculation('7')" class="keys">7</button>
+            <button onclick="calculation('8')" class="keys">8</button>
+            <button onclick="calculation('9')" class="keys">9</button>
+            <button onclick="calculation('+')" class="keys">+</button>
+            <button onclick="calculation('4')" class="keys">4</button>
+            <button onclick="calculation('5')" class="keys">5</button>
+            <button onclick="calculation('6')" class="keys">6</button>
+            <button onclick="calculation('1')" class="keys">1</button>
+            <button onclick="calculation('2')" class="keys">2</button>
+            <button onclick="calculation('3')" class="keys">3</button>
+            <button onclick="calculation('0')" class="keys">0</button>
+            <button onclick="calculation('.')" class="keys">.</button>
+            <button onclick="calculation('=')" class="keys">=</button>
+        </div>
+    </div>
 </body>
 </html>
